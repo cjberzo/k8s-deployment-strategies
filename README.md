@@ -110,7 +110,13 @@ kubectl patch service app-service \
 You can use k6 to observe the traffic switch in real time:
 
 ```bash
-k6 run k6/load-test.js
+k6 run -e BASE_URL=http://$(minikube ip):30007 k6/load-test.js
+```
+
+or
+
+```bash
+make test
 ```
 
 Run the test before and after switching traffic to verify that all requests are routed to the selected version.
@@ -176,9 +182,14 @@ Run multiple times to observe mixed responses.
 ## Run test
 
 ```bash
-k6 run k6/load-test.js
+k6 run -e BASE_URL=http://$(minikube ip):30007 k6/load-test.js
 ```
 
+or
+
+```bash
+make test
+```
 
 ## Expected Results
 

@@ -22,10 +22,14 @@ clean-bg:
 clean-canary:
 	kubectl delete -f k8s/canary/ || true
 
+test:
+	k6 run -e BASE_URL=http://$(shell minikube ip):30007 k6/load-test.js || true
+
 help:
 	@echo "Available commands:"
 	@echo "  make build        - Build Docker images"
 	@echo "  make blue-green   - Deploy Blue/Green strategy"
 	@echo "  make canary       - Deploy Canary strategy"
 	@echo "  make clean-bg     - Remove Blue/Green resources"
+	@echo "  make test         - Run load tests"
 	@echo "  make clean-canary - Remove Canary resources"
