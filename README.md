@@ -208,7 +208,13 @@ kubectl scale deployment app-v2 --replicas=5
 Re-run k6 to observe ~50/50 traffic distribution.
 
 ```bash
-k6 run k6/load-test.js
+k6 run -e BASE_URL=http://$(minikube ip):30007 k6/load-test.js
+```
+
+or
+
+```bash
+make test
 ```
 
 ## Delete Canary resources
