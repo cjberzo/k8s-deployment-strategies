@@ -208,7 +208,7 @@ kubectl delete -f k8s/canary/
 or
 
 ```bash
-make clean-canary``
+make clean-canary
 ```
 
 # 🧠 Key Concepts
